@@ -1,0 +1,39 @@
+{
+    "queries": {
+        "m_GetMainList": {
+            "id": "m_GetMainList",
+            "description": "Main List: Employees in Dept with WorkTime (Join TWINSA_MASTER & TWINSA_WORKTIME)",
+            "sql": "SELECT A.DEPT, B.DEPTNAME, A.SABUN, A.NAMEK, A.JIKWI, A.STATUS, C.WORKTIME, C.OVERTIME FROM TW_MIS_ADM.TWINSA_MASTER A LEFT JOIN TW_MIS_ADM.TWINSA_DEPT B ON A.DEPT = B.DEPT LEFT JOIN TW_MIS_ADM.TWINSA_WORKTIME C ON A.SABUN = C.SABUN AND C.WORKDATE = :work_date WHERE A.DEPT = :dept_code ORDER BY A.SABUN"
+        },
+        "m_GetSubList": {
+            "id": "m_GetSubList",
+            "description": "Daily Work Details (TW_MIS_ADM.TWINSA_WORKDAILY)",
+            "sql": "SELECT YYYYMM, SABUN, DEPTCODE, DAY01, DAY02, DAY03, DAY04, DAY05, DAY06, DAY07, DAY08, DAY09, DAY10, DAY11, DAY12, DAY13, DAY14, DAY15, DAY16, DAY17, DAY18, DAY19, DAY20, DAY21, DAY22, DAY23, DAY24, DAY25, DAY26, DAY27, DAY28, DAY29, DAY30, DAY31, REMARK FROM TW_MIS_ADM.TWINSA_WORKDAILY WHERE YYYYMM = :yyyymm AND DEPTCODE = :dept"
+        },
+        "m_GetCallList": {
+            "id": "m_GetCallList",
+            "description": "Call/Outside Work Records (TW_MIS_ADM.TWINSA_WORK_CALL)",
+            "sql": "SELECT SABUN, REMARK, FROMTIME, TOTIME FROM TW_MIS_ADM.TWINSA_WORK_CALL WHERE CALLDATE = :date"
+        },
+        "m_GetMasterList": {
+            "id": "m_GetMasterList",
+            "description": "Employee List (Master Only - Positional Bind)",
+            "sql": "SELECT A.SABUN, A.NAMEK, A.DEPT, A.JIKWI, A.STATUS FROM TW_MIS_ADM.TWINSA_MASTER A WHERE A.DEPT = :1 ORDER BY A.SABUN"
+        },
+        "m_UpdateWorkTime": {
+            "id": "m_UpdateWorkTime",
+            "description": "Update Work Time DML",
+            "sql": "UPDATE TW_MIS_ADM.TWINSA_WORKTIME SET WORKTIME = :workTime, OVERTIME = :overTime WHERE SABUN = :sabun AND WORKDATE = :date"
+        },
+        "m_InsertWorkRecord": {
+            "id": "m_InsertWorkRecord",
+            "description": "Insert Work Record DML",
+            "sql": "INSERT INTO TW_MIS_ADM.TWINSA_WORKTIME (WORKDATE, SABUN, WORKTIME, OVERTIME) VALUES (:date, :sabun, :workTime, :overTime)"
+        },
+        "m_GetDeptList": {
+            "id": "m_GetDeptList",
+            "description": "Department List (TW_MIS_ADM.TWINSA_DEPT)",
+            "sql": "SELECT DEPT, DEPTNAME FROM TW_MIS_ADM.TWINSA_DEPT WHERE DELMARK IS NULL ORDER BY DEPT"
+        }
+    }
+}

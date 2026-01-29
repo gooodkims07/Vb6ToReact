@@ -1,0 +1,19 @@
+{
+    "queries": {
+        "m_UpdatePassword": {
+            "id": "m_UpdatePassword",
+            "description": "Update User Password",
+            "sql": "UPDATE TW_MIS_PMPA.TWBAS_PASS SET PASSWORD = :newPassword WHERE IDNUMBER = :sabun AND PASSWORD = :oldPassword"
+        },
+        "m_LoginCheck": {
+            "id": "m_LoginCheck",
+            "description": "Check Login Credentials",
+            "sql": "SELECT IDNUMBER, NAME FROM TW_MIS_PMPA.TWBAS_PASS WHERE IDNUMBER = :sabun AND PASSWORD = :password"
+        },
+        "m_GetName": {
+            "id": "m_GetName",
+            "description": "Get User Name by ID",
+            "sql": "SELECT NAME FROM TW_MIS_PMPA.TWBAS_PASS WHERE IDNUMBER = :sabun"
+        }
+    }
+}
