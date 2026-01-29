@@ -36,7 +36,7 @@ export default function FrmLogin({ onLoginSuccess }) {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/api/query', {
+            const response = await fetch('/api/query', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -104,7 +104,7 @@ export default function FrmLogin({ onLoginSuccess }) {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/api/query', {
+            const response = await fetch('/api/query', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -141,7 +141,7 @@ export default function FrmLogin({ onLoginSuccess }) {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/api/query', {
+            const response = await fetch('/api/query', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
